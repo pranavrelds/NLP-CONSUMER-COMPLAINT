@@ -1,7 +1,7 @@
 import os,sys
 import yaml
 from pyspark.sql import DataFrame
-from config.logger import logger, DetailedException
+from config.logging import logging, DetailedException
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
 def write_yaml_file(file_path: str, data: dict = None):

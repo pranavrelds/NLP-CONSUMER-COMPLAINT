@@ -4,7 +4,7 @@ from typing import List
 from pyspark.sql import DataFrame
 from pyspark.sql.types import (TimestampType, 
             StringType, FloatType, StructType, StructField)
-from config.logger import logger, DetailedException
+from config.logging import logging, DetailedException
 
 
 
