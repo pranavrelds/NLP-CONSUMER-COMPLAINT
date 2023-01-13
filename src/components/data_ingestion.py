@@ -26,7 +26,7 @@ class DataIngestion:
         n_month_interval: n month data will be downloded
         """
         try:
-            logging.info(f"{'>>' * 20}Starting data ingestion.{'<<' * 20}")
+            logging.info(f"Starting data ingestion")
             self.data_ingestion_config = data_ingestion_config
             self.failed_download_urls: List[DownloadUrl] = []
             self.n_retry = n_retry

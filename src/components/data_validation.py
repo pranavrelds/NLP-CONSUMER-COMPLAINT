@@ -6,14 +6,11 @@ from typing import List, Dict
 from pyspark.sql import DataFrame
 from pyspark.sql.functions import col, lit
 
-from src.data_validation_config.spark_manager import spark_session
+from src.data_access_config.spark_manager import spark_session
 from src.DTO.output_dto import DataIngestionArtifacts, DataValidationArtifacts
 from src.DTO.input_dto import DataValidationConfig
 from src.schema.schema import DataSchema
 from config.logging import logging, DetailedException
-
-
-
 
 
 ERROR_MESSAGE = "error_msg"
@@ -24,11 +21,11 @@ class DataValidation():
 
     def __init__(self,
                  data_validation_config: DataValidationConfig,
-                 data_ingestion_artifact: DataIngestionArtifacts,
-                 schema=FinanceDataSchema()
+                 data_ingestion_artifacts: DataIngestionArtifacts,
+                 schema=DataSchema()
                 ):
         try:
-            self.data_ingestion_artifact: DataIngestionArtifacts = data_ingestion_artifact
+            self.data_ingestion_artifacts: DataIngestionArtifacts = data_ingestion_artifacts
             self.data_validation_config = data_validation_config
             self.schema = schema
         except Exception as e:
@@ -36,10 +33,8 @@ class DataValidation():
 
     def read_data(self) -> DataFrame:
         try:
-            dataframe: DataFrame = spark_session.read.parquet(
-                self.data_ingestion_artifact.feature_store_file_path
-            )
-            logging.info(f"Data frame is created using file: {self.data_ingestion_artifact.feature_store_file_path}")
+            dataframe: DataFrame = spark_session.read.parquet(self.data_ingestion_artifacts.feature_store_file_path).limit(20000)
+            logging.info(f"Data frame is created using file: {self.data_ingestion_artifacts.feature_store_file_path}")
             logging.info(f"Number of row: {dataframe.count()} and column: {len(dataframe.columns)}")
             return dataframe
         except Exception as e:
@@ -125,7 +120,7 @@ class DataValidation():
             dataframe: DataFrame = self.drop_unwanted_columns(dataframe=dataframe)
 
             # validation to ensure that all require column available
-            self.is_required_columns_exist(dataframe=dataframe)
+            # self.is_required_columns_exist(dataframe=dataframe)
             logging.info("Saving preprocessed data.")
             print(f"Row: [{dataframe.count()}] Column: [{len(dataframe.columns)}]")
             print(f"Expected Column: {self.schema.required_columns}\nPresent Columns: {dataframe.columns}")

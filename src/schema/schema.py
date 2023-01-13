@@ -103,14 +103,12 @@ class DataSchema:
         return [f"im_{col}" for col in self.numerical_columns]
 
 
-
     @property
     def tfidf_features(self) -> List[str]:
         features = [
             self.col_issue
         ]
         return features
-
     
     @property
     def tf_tfidf_features(self) -> List[str]:
