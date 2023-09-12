@@ -2,10 +2,9 @@ from setuptools import setup, find_packages
 from typing import List
 
 # Declaring variables for setup functions
-PROJECT_NAME = "consumer-complaint"
+PROJECT_NAME = "nlp-consumer-complaint"
 VERSION = "0.0.1"
 AUTHOR = "Pranav Tondgaonkar"
-DESRCIPTION = " To develop a machine learning (ML) model that can help to determine if freshly made complaints are troublesome or not"
 REQUIREMENT_FILE_NAME = "requirements.txt"
 
 HYPHEN_E_DOT ="-e ."
@@ -30,7 +29,6 @@ setup(
     name=PROJECT_NAME,
     version=VERSION,
     author=AUTHOR,
-    description=DESRCIPTION,
     packages=find_packages(),
     install_requires=get_requirements_list()
 )

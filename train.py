@@ -1,5 +1,5 @@
-from src.pipelines.training_pipeline import TrainingPipeline
-from src.DTO.input_dto import TrainingPipelineConfig
+from src.pipeline.training import TrainingPipeline
+from src.entity.config_entity import TrainingPipelineConfig
 
 if __name__=="__main__":
     training_pipeline_config= TrainingPipelineConfig()
