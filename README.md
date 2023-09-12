@@ -1,3 +1,7 @@
-This project aims to build a machine learning model that can classify consumer complaints as either troublesome or not. The model is trained on data from the Consumer Financial Protection Bureau (CFPB), which receives complaints from consumers about financial products and services.
+# NLP-CONSUMER-COMPLAINT
 
-The goal of this project is to help businesses quickly address problems and meet the needs of consumers by identifying and prioritizing potentially troublesome complaints. By accurately classifying complaints, businesses can prioritize their resources and ensure that they are responding to the most pressing issues facing their customers.
+## Problem Statement
+Consumer complaints are a valuable source of feedback for businesses. However, manually analyzing and categorizing these complaints can be time-consuming and prone to errors. An automated solution is required to efficiently process and categorize consumer complaints based on their content.
+
+## Solution
+This repository offers a solution to process and categorize consumer complaints using natural language processing (NLP). The model is trained on a dataset of consumer complaints to recognize and categorize them based on their content.
